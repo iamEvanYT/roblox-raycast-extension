@@ -43,15 +43,17 @@ const cache = new BetterCache<GameDetails>({
   defaultTTL: CACHE_TIMEOUT,
 });
 
-export function useBatchGameDetails(universeIds: number[]) {
+export function useBatchGameDetails(universeIds: number[], useCache?: boolean) {
   const gameDetails: Record<number, GameDetails> = {};
 
   const sortedUniverseIds = universeIds
     .map((id) => {
-      const cachedData = cache.get(id.toString());
-      if (cachedData) {
-        gameDetails[id] = cachedData;
-        return null;
+      if (useCache !== false) {
+        const cachedData = cache.get(id.toString());
+        if (cachedData) {
+          gameDetails[id] = cachedData;
+          return null;
+        }
       }
       return id;
     })
@@ -79,8 +81,8 @@ export function useBatchGameDetails(universeIds: number[]) {
   };
 }
 
-export function useGameDetails(universeId: number) {
-  const { data: batchGameDetails, isLoading } = useBatchGameDetails([universeId]);
+export function useGameDetails(universeId: number, useCache?: boolean) {
+  const { data: batchGameDetails, isLoading } = useBatchGameDetails([universeId], useCache);
 
   let gameDetails = null;
   if (!isLoading && batchGameDetails) {
