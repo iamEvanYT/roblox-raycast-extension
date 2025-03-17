@@ -1,6 +1,6 @@
 # Roblox Changelog
 
-## [Bug Fixes] - 2025-03-17
+## [Bug Fixes] - {PR_MERGE_DATE}
 
 - fix: Fixed some errors and improved the code.
 - chore: updated dependencies
