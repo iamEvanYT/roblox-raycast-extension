@@ -1,9 +1,12 @@
 # Roblox Changelog
 
-## [Bug Fixes] - {PR_MERGE_DATE}
+## [Security Maintenance] - 2026-05-21
 
-- fix: Fixed some errors and improved the code.
-- chore: updated dependencies
+- Updated the extension to address security advisories.
+
+## [Windows Support] - 2025-08-27
+
+- feat: Added Windows support.
 
 ## [Show Image Command] - 2024-11-22
 

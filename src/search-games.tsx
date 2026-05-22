@@ -85,9 +85,8 @@ export default (props: LaunchProps<{ arguments: Arguments.SearchGames }>) => {
   }, []);
 
   const gameIds = useMemo(() => {
-    return games?.map((game) => game.universeId);
+    return games.map((game) => game.universeId);
   }, [games]);
-
   const { data: thumbnails, isLoading: thumbnailsLoading } = useBatchGameThumbnails(gameIds);
 
   const isLoading = searchResultsLoading || thumbnailsLoading;
@@ -102,7 +101,7 @@ export default (props: LaunchProps<{ arguments: Arguments.SearchGames }>) => {
       filtering={false}
       isShowingDetail
     >
-      {games?.map((game) => {
+      {games.map((game) => {
         const gameThumbnails = thumbnails[game.universeId];
         return (
           <GamesListItem
